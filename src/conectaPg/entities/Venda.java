@@ -5,7 +5,7 @@ public class Venda {
     private int idVenda;
     private int qtdVendida;
     private int codComp;
-    private int matVende;
+    private int matVend;
 
     public int getIdVenda() {
         return idVenda;
@@ -32,10 +32,10 @@ public class Venda {
     }
 
     public int getMatVende() {
-        return matVende;
+        return matVend;
     }
 
     public void setMatVende(int matVende) {
-        this.matVende = matVende;
+        this.matVend = matVende;
     }
 }

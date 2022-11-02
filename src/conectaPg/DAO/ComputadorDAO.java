@@ -23,7 +23,7 @@ public class ComputadorDAO {
         /*? valor a ser substituido no INSERT*/
         try {
             PreparedStatement preaparador = con.prepareStatement(sql);
-            preaparador.setInt(1, comp.getCodCumputador());
+            preaparador.setInt(1, comp.getCodComputador());
             preaparador.setString(2, comp.getDescricao());
             preaparador.setInt(3, comp.getQtd());
             preaparador.execute();
@@ -34,16 +34,17 @@ public class ComputadorDAO {
         }
     }
     public void updateComputador(Computador comp) {
-        String sql = "UPDATE computador SET qtd = ? WHERE codComputador = ?)";
-       try {
-           PreparedStatement preparador = con.prepareStatement(sql);
-           preparador.setInt(1, comp.getQtd());
-           preparador.setInt(2, comp.getCodCumputador());
+        String sql = "UPDATE computador SET qtd = ? WHERE codComputador = ?";
 
-           preparador.execute();
-           preparador.close();
+        try {
+            PreparedStatement preparador = con.prepareStatement(sql);
+            preparador.setInt(1, comp.getQtd());
+            preparador.setInt(2, comp.getCodComputador());
 
-           System.out.println("Alteração Realizada");
+            preparador.execute();
+            preparador.close();
+
+            System.out.println("Alteração Realizada");
        }catch (SQLException e) {
            System.out.println("ERRO - " + e.getMessage());
        }
@@ -52,7 +53,7 @@ public class ComputadorDAO {
         String sql = "DELETE FROM computador WHERE codComputador = ?";
         try {
             PreparedStatement preparador = con.prepareStatement(sql);
-            preparador.setInt(1,comp.getCodCumputador());
+            preparador.setInt(1,comp.getCodComputador());
 
             preparador.execute();
             preparador.close();
@@ -69,9 +70,9 @@ public class ComputadorDAO {
             ResultSet resultados = preparador.executeQuery();
             while (resultados.next()) {
                 Computador computador2 = new Computador();
-                computador2.setCodCumputador(0);
-                computador2.setQtd(0);
-                computador2.setDescricao(".");
+                computador2.setCodComputador(resultados.getInt("CodC"));
+                computador2.setQtd(resultados.getInt("Qtd"));
+                computador2.setDescricao(resultados.getString("Descricao"));
                 listaC.add(computador2);
             }
         }catch (SQLException e) {

@@ -2,16 +2,16 @@ package conectaPg.entities;
 
 public class Computador {
 
-    private int codCumputador;
+    private int codComputador;
     private String Descricao;
     private int Qtd;
 
-    public int getCodCumputador() {
-        return codCumputador;
+    public int getCodComputador() {
+        return codComputador;
     }
 
-    public void setCodCumputador(int codCumputador) {
-        this.codCumputador = codCumputador;
+    public void setCodComputador(int codComputador) {
+        this.codComputador = codComputador;
     }
 
     public String getDescricao() {

@@ -17,7 +17,7 @@ public class VendedorDAO {
         con = Conecta.criarConexao();
     }
     public void cadastrarVendedor(Vendedor vend) {
-        String sql = "INSERT INTO vendedor(matricula, nome) VALUES(?, ?, ?)";
+        String sql = "INSERT INTO vendedor(matricula, nome) VALUES(?, ?)";
 
         try {
             PreparedStatement preparador = con.prepareStatement(sql);
@@ -33,11 +33,11 @@ public class VendedorDAO {
         }
     }
     public void updateVendedor(Vendedor vend) {
-        String sql = "UPDATE vendedor SET matricula = ? WHERE nome = ?";
+        String sql = "UPDATE vendedor SET nome = ? WHERE matricula = ?";
         try {
             PreparedStatement preparador = con.prepareStatement(sql);
-            preparador.setInt(1, vend.getMatricula());
-            preparador.setString(2, vend.getNome());
+            preparador.setString(1, vend.getNome());
+            preparador.setInt(2, vend.getMatricula());
 
             preparador.execute();
             preparador.close();
@@ -48,7 +48,7 @@ public class VendedorDAO {
         }
     }
     public void deleteVendedor(Vendedor vend) {
-        String sql = "DELETE vendedor WHERE matricula = ?";
+        String sql = "DELETE FROM vendedor WHERE matricula = ?";
         try {
             PreparedStatement preparador = con.prepareStatement(sql);
             preparador.setInt(1,vend.getMatricula());
@@ -63,17 +63,17 @@ public class VendedorDAO {
 
     public List<Vendedor> selectAll(){
         String sql = "SELECT * FROM vendedor";
-        List<Vendedor> lista = new ArrayList<Vendedor>();
+        List<Vendedor> lista = new ArrayList<>();
         try {
             PreparedStatement preparador = con.prepareStatement(sql);
             ResultSet resultados = preparador.executeQuery();
             while (resultados.next()) {
                 Vendedor vendedor2 = new Vendedor();
                 vendedor2.setMatricula(resultados.getInt("matricula"));
-                vendedor2.setNome(resultados.getString("Peter"));
+                vendedor2.setNome(resultados.getString("nome"));
                 lista.add(vendedor2);
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("ERRO - " + e.getMessage());
         }
         return lista;

@@ -16,15 +16,16 @@ public class VendaDAO {
     public VendaDAO() throws SQLException, ClassNotFoundException {
         con = Conecta.criarConexao();
     }
-    public void cadastrarVendedor(Venda venda) {
-        String sql = "INSERT INTO vendedor(idVenda, qtdVendida, codComp, matVenda) VALUES(?, ?, ?, ?)";
-
+    public void cadastrarVenda(Venda venda) {
+        String sql = "INSERT INTO venda(idVenda, qtdVendida, codComp, matVend) VALUES(?, ?, ?, ?)";
+        System.out.println(sql);
         try {
             PreparedStatement preparador = con.prepareStatement(sql);
-            preparador.setInt(1, venda.getQtdVendida());
+            preparador.setInt(1, venda.getIdVenda());
             preparador.setInt(2, venda.getQtdVendida());
             preparador.setInt(3,venda.getCodComp());
             preparador.setInt(4,venda.getMatVende());
+            System.out.println(preparador);
 
             preparador.execute();
             preparador.close();
@@ -36,7 +37,8 @@ public class VendaDAO {
     }
 
     public void updateVenda(Venda venda) {
-        String sql = "UPDATE vendedor SET qtdVendida = ? WHERE idVenda = ?";
+        String sql = "UPDATE venda SET qtdVendida = ? WHERE idVenda = ?";
+
         try {
             PreparedStatement preparador = con.prepareStatement(sql);
             preparador.setInt(1, venda.getQtdVendida());
@@ -52,7 +54,7 @@ public class VendaDAO {
     }
 
     public void deleteVenda(Venda venda) {
-        String sql = "DELETE venda WHERE idVenda = ?";
+        String sql = "DELETE FROM venda WHERE idVenda = ?";
         try {
             PreparedStatement preparador = con.prepareStatement(sql);
             preparador.setInt(1, venda.getIdVenda());
@@ -72,10 +74,10 @@ public class VendaDAO {
             ResultSet resultados = preaparador.executeQuery();
             while (resultados.next()) {
                 Venda venda2 = new Venda();
-                venda2.setIdVenda(0);
-                venda2.setQtdVendida(0);
-                venda2.setMatVende(0);
-                venda2.setCodComp(0);
+                venda2.setIdVenda(resultados.getInt("idVenda"));
+                venda2.setQtdVendida(resultados.getInt("QtdVendida"));
+                venda2.setCodComp(resultados.getInt("CodComp"));
+                venda2.setMatVende(resultados.getInt("MatVend"));
                 listaA.add(venda2);
             }
         }catch (SQLException e) {

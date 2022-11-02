@@ -8,16 +8,16 @@ import java.util.List;
 
 public class TestVendedor {
     public static void main(String[] args) {
-        vendedorInsert();
-        vendedorUpdate();
-        vendedorDelete();
+        //vendedorInsert();
+        //vendedorUpdate();
+        //vendedorDelete();
         vendedorShow();
     }
 
     public static void vendedorInsert() {
         Vendedor vendedor = new Vendedor();
-        vendedor.setMatricula(3301);
-        vendedor.setNome("Pedro Arruda");
+        vendedor.setMatricula(24);
+        vendedor.setNome("Breno Duarte");
         VendedorDAO vendedorDAO = null;
         try {
             vendedorDAO = new VendedorDAO();
@@ -26,10 +26,11 @@ public class TestVendedor {
         }catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        vendedorDAO.cadastrarVendedor(vendedor);
     }
     public static void vendedorUpdate() {
         Vendedor vendedor = new Vendedor();
-        vendedor.setMatricula(1);
+        vendedor.setMatricula(3301);
         vendedor.setNome("Yan");
         VendedorDAO vendedorDAO = null;
         try {
@@ -53,6 +54,7 @@ public class TestVendedor {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        vendedorDAO.deleteVendedor(vendedor);
     }
     public static void  vendedorShow() {
         VendedorDAO vendedorDAO =null;
@@ -65,7 +67,8 @@ public class TestVendedor {
         }
         List<Vendedor> listaShowAll = vendedorDAO.selectAll();
         for(Vendedor e:listaShowAll) {
-            System.out.println();
+            System.out.print("MATRICULA: " + e.getMatricula());
+            System.out.println(" NOME: " + e.getNome());
         }
     }
 }
