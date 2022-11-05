@@ -8,18 +8,18 @@ import java.util.List;
 
 public class TestVenda {
     public static void main(String[] args) {
-        //vendaInsert();
+        vendaInsert();
         //vendaUpdate();
         //vendaDelete();
-        showAllVendas();
+        //showAllVendas();
     }
 
     public static void vendaInsert() {
         Venda venda = new Venda();
-        venda.setIdVenda(1);
-        venda.setQtdVendida(1);
+        venda.setIdVenda(6);
+        venda.setQtdVendida(2);
         venda.setCodComp(1);
-        venda.setMatVende(22);
+        venda.setMatVende(24);
 
         VendaDAO vendaDAO = null;
         try{

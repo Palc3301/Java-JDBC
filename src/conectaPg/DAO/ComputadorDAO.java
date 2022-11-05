@@ -70,7 +70,7 @@ public class ComputadorDAO {
             ResultSet resultados = preparador.executeQuery();
             while (resultados.next()) {
                 Computador computador2 = new Computador();
-                computador2.setCodComputador(resultados.getInt("CodC"));
+                computador2.setCodComputador(resultados.getInt("CodComputador"));
                 computador2.setQtd(resultados.getInt("Qtd"));
                 computador2.setDescricao(resultados.getString("Descricao"));
                 listaC.add(computador2);

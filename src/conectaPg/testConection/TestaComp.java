@@ -1,9 +1,7 @@
 package conectaPg.testConection;
 
 import conectaPg.DAO.ComputadorDAO;
-import conectaPg.DAO.VendedorDAO;
 import conectaPg.entities.Computador;
-import conectaPg.entities.Vendedor;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -11,16 +9,17 @@ import java.util.Scanner;
 
 public class TestaComp {
     public static void main(String[] args) {
+        
         //computadorInsert();
         //computadorUpdate();
         //computadorDelete();
-        computadorShow();
+        //computadorShow();
     }
     public static void computadorInsert() {
         Computador computador = new Computador();
-        computador.setCodComputador(1);
-        computador.setQtd(10);
-        computador.setDescricao("Acer Nitro 5");
+        computador.setCodComputador(3);
+        computador.setQtd(20);
+        computador.setDescricao("Asus TUF F15");
 
         ComputadorDAO computadorDAO = null;
         try {
@@ -74,7 +73,7 @@ public class TestaComp {
         for(Computador e:listaShowAll) {
             System.out.println("COD_COMPUTADOR: " + e.getCodComputador());
             System.out.println("QTD: " + e.getQtd());
-            System.out.println("DESCRICAO" + e.getDescricao());
+            System.out.println("DESCRICAO: " + e.getDescricao());
         }
     }
 }

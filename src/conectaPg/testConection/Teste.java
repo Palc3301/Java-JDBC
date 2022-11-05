@@ -1,7 +1,5 @@
 package conectaPg.testConection;
 
-import conectaPg.testConection.Conecta;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 

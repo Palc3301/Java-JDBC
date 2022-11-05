@@ -11,7 +11,7 @@ public class TestVendedor {
         //vendedorInsert();
         //vendedorUpdate();
         //vendedorDelete();
-        vendedorShow();
+        //vendedorShow();
     }
 
     public static void vendedorInsert() {
